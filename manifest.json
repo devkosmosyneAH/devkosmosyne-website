@@ -1,0 +1,52 @@
+{
+    "name": "Dev Kosmosyne",
+    "short_name": "DevKosmosyne",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#181828",
+    "theme_color": "#3B5AFE",
+    "description": "Dev Kosmosyne - Desarrollo de software multiplataforma",
+    "orientation": "portrait-primary",
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "icons/Icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-maskable-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icons/Icon-maskable-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ],
+    "categories": ["business", "productivity", "developer"],
+    "lang": "es",
+    "scope": "/",
+    "screenshots": [
+        {
+            "src": "screenshots/desktop.png",
+            "sizes": "1280x720",
+            "type": "image/png",
+            "form_factor": "wide"
+        },
+        {
+            "src": "screenshots/mobile.png",
+            "sizes": "360x640",
+            "type": "image/png",
+            "form_factor": "narrow"
+        }
+    ]
+}

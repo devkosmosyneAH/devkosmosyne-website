@@ -1,0 +1,26 @@
+# ==========================================
+# Dev Kosmosyne - WebPlatform
+# Robots.txt - SEO Configuration
+# ==========================================
+
+User-agent: *
+
+# Permitir el rastreo del sitio
+Allow: /
+
+# Evitar rastrear archivos y recursos internos
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
+Disallow: /logs/
+Disallow: /temp/
+
+# Permitir recursos necesarios para renderizar Flutter Web
+Allow: /assets/
+Allow: /icons/
+Allow: /canvaskit/
+Allow: /flutter.js
+Allow: /main.dart.js
+
+# Sitemap XML
+Sitemap: https://TU-DOMINIO.com/sitemap.xml

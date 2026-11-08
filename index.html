@@ -3,6 +3,7 @@
 
 <head>
 
+
   <!-- Configuración principal -->
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -39,7 +40,8 @@
   <meta property="og:description"
     content="Transformamos ideas en soluciones digitales mediante desarrollo de software, aplicaciones móviles y plataformas web.">
   <meta property="og:url" content="https://devkosmosyneah.github.io/devkosmosyne-website/">
-  <meta property="og:image" content="https://raw.githubusercontent.com/devkosmosyneAH/devkosmosyne-website/refs/heads/main/icons/Icon-192.png">
+  <meta property="og:image"
+    content="https://raw.githubusercontent.com/devkosmosyneAH/devkosmosyne-website/refs/heads/main/icons/Icon-192.png">
   <meta property="og:image:alt" content="Dev Kosmosyne - Desarrollo de software y soluciones tecnológicas">
 
   <!-- Twitter / X -->
@@ -101,14 +103,452 @@
 
   <!-- Flutter -->
   <script>
-    const serviceWorkerVersion = "286100482" /* Flutter's service worker is deprecated and will be removed in a future Flutter release. */;
+    const serviceWorkerVersion = "2620470863" /* Flutter's service worker is deprecated and will be removed in a future Flutter release. */;
   </script>
 
   <script src="flutter.js" defer></script>
+
+
+  <style>
+    /* =====================================
+     DEV KOSMOSYNE - ANIMATED SPLASH SCREEN
+  ===================================== */
+
+    #dk-splash {
+      position: fixed;
+      inset: 0;
+      z-index: 999999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 50% 45%, #172b4b 0%, transparent 48%),
+        linear-gradient(145deg, #080e1c, #101b30 55%, #080e1c);
+      opacity: 1;
+      visibility: visible;
+      transition:
+        opacity 0.9s ease,
+        visibility 0.9s ease;
+    }
+
+    #dk-splash.hide {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    /* Luces ambientales */
+
+    .dk-glow {
+      position: absolute;
+      width: 350px;
+      height: 350px;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.22;
+      animation: glowMove 7s ease-in-out infinite alternate;
+    }
+
+    .dk-glow.one {
+      background: #087cff;
+      top: -130px;
+      left: -100px;
+    }
+
+    .dk-glow.two {
+      background: #813dff;
+      bottom: -150px;
+      right: -100px;
+      animation-delay: -3s;
+    }
+
+    /* Partículas */
+
+    .dk-particles {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .dk-particles span {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: #75caff;
+      border-radius: 50%;
+      box-shadow: 0 0 12px #39aaff;
+      animation: particleFloat 7s linear infinite;
+    }
+
+    .dk-particles span:nth-child(1) {
+      left: 10%;
+      top: 80%;
+      animation-delay: 0s;
+    }
+
+    .dk-particles span:nth-child(2) {
+      left: 25%;
+      top: 30%;
+      animation-delay: 2s;
+    }
+
+    .dk-particles span:nth-child(3) {
+      left: 80%;
+      top: 70%;
+      animation-delay: 1s;
+    }
+
+    .dk-particles span:nth-child(4) {
+      left: 70%;
+      top: 20%;
+      animation-delay: 3s;
+    }
+
+    .dk-particles span:nth-child(5) {
+      left: 45%;
+      top: 90%;
+      animation-delay: 4s;
+    }
+
+    .dk-particles span:nth-child(6) {
+      left: 90%;
+      top: 45%;
+      animation-delay: 2.5s;
+    }
+
+    .dk-particles span:nth-child(7) {
+      left: 15%;
+      top: 15%;
+      animation-delay: 1.5s;
+    }
+
+    .dk-particles span:nth-child(8) {
+      left: 55%;
+      top: 10%;
+      animation-delay: 3.5s;
+    }
+
+    /* Contenedor central */
+
+    .dk-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      animation: contentAppear 1.2s ease both;
+    }
+
+    /* Órbitas */
+
+    .dk-orbit {
+      position: absolute;
+      width: 230px;
+      height: 230px;
+      border: 1px solid rgba(78, 174, 255, 0.25);
+      border-radius: 50%;
+      animation: orbitRotate 12s linear infinite;
+    }
+
+    .dk-orbit::before {
+      content: "";
+      position: absolute;
+      top: 18px;
+      left: 28px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #65c8ff;
+      box-shadow: 0 0 15px #65c8ff;
+    }
+
+    .dk-orbit.second {
+      width: 280px;
+      height: 280px;
+      border-color: rgba(145, 101, 255, 0.2);
+      animation-direction: reverse;
+      animation-duration: 18s;
+    }
+
+    .dk-orbit.second::before {
+      background: #a68aff;
+      box-shadow: 0 0 15px #a68aff;
+      top: 55px;
+      left: 5px;
+    }
+
+    /* Logo */
+
+    .dk-logo-wrapper {
+      width: 125px;
+      height: 125px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 32px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      backdrop-filter: blur(15px);
+      box-shadow:
+        0 0 35px rgba(39, 143, 255, 0.22),
+        0 0 90px rgba(93, 73, 255, 0.13);
+      animation: logoFloat 3s ease-in-out infinite;
+    }
+
+    .dk-logo {
+      width: 95px;
+      height: 95px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 12px rgba(79, 174, 255, 0.4));
+    }
+
+    /* Nombre */
+
+    .dk-title {
+      margin-top: 48px;
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+      font-size: clamp(23px, 5vw, 34px);
+      font-weight: 800;
+      letter-spacing: 4px;
+      text-shadow: 0 0 25px rgba(65, 164, 255, 0.35);
+    }
+
+    .dk-subtitle {
+      margin-top: 12px;
+      color: #9cb4d3;
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    /* Indicador de carga */
+
+    .dk-loader {
+      display: flex;
+      gap: 8px;
+      margin-top: 38px;
+    }
+
+    .dk-loader span {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #56baff;
+      animation: loaderPulse 1.2s ease-in-out infinite;
+    }
+
+    .dk-loader span:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .dk-loader span:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    .dk-footer {
+      position: absolute;
+      bottom: 28px;
+      color: rgba(180, 204, 230, 0.48);
+      font: 10px Arial, sans-serif;
+      letter-spacing: 2px;
+    }
+
+    /* Animaciones */
+
+    @keyframes logoFloat {
+
+      0%,
+      100% {
+        transform: translateY(0) scale(1);
+      }
+
+      50% {
+        transform: translateY(-10px) scale(1.035);
+      }
+    }
+
+    @keyframes orbitRotate {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes particleFloat {
+      0% {
+        transform: translateY(0) scale(0.5);
+        opacity: 0;
+      }
+
+      30% {
+        opacity: 0.9;
+      }
+
+      100% {
+        transform: translateY(-180px) scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    @keyframes glowMove {
+      from {
+        transform: translate(0, 0) scale(0.9);
+      }
+
+      to {
+        transform: translate(80px, 50px) scale(1.2);
+      }
+    }
+
+    @keyframes contentAppear {
+      from {
+        opacity: 0;
+        transform: translateY(25px) scale(0.95);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes loaderPulse {
+
+      0%,
+      80%,
+      100% {
+        opacity: 0.3;
+        transform: scale(0.7);
+      }
+
+      40% {
+        opacity: 1;
+        transform: scale(1.3);
+      }
+    }
+
+    /* Adaptación móvil */
+
+    @media (max-width: 480px) {
+      .dk-logo-wrapper {
+        width: 110px;
+        height: 110px;
+      }
+
+      .dk-logo {
+        width: 85px;
+        height: 85px;
+      }
+
+      .dk-orbit {
+        width: 200px;
+        height: 200px;
+      }
+
+      .dk-orbit.second {
+        width: 245px;
+        height: 245px;
+      }
+    }
+
+    /* Accesibilidad */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      #dk-splash *,
+      #dk-splash *::before,
+      #dk-splash *::after {
+        animation: none !important;
+      }
+
+      #dk-splash {
+        transition: opacity 0.3s ease;
+      }
+    }
+  </style>
+
 </head>
 
 <body>
+
+  <!-- DEV KOSMOSYNE SPLASH SCREEN -->
+
+  <div id="dk-splash">
+
+    <div class="dk-glow one"></div>
+    <div class="dk-glow two"></div>
+
+    <div class="dk-particles">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <div class="dk-content">
+
+      <div class="dk-orbit"></div>
+      <div class="dk-orbit second"></div>
+
+      <div class="dk-logo-wrapper">
+        <img class="dk-logo"
+          src="https://raw.githubusercontent.com/devkosmosyneAH/devkosmosyne-website/refs/heads/main/icons/Icon-512.png"
+          alt="Dev Kosmosyne" fetchpriority="high" />
+      </div>
+
+      <div class="dk-title">
+        DEV KOSMOSYNE
+      </div>
+
+      <div class="dk-subtitle">
+        Innovación · Tecnología · Desarrollo
+      </div>
+
+      <div class="dk-loader">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+    </div>
+
+    <div class="dk-footer">
+      CREATING THE DIGITAL FUTURE
+    </div>
+
+  </div>
+
+  <!-- FIN SPLASH SCREEN -->
+
   <script>
+
+    // Ocultar splash cuando Flutter haya renderizado su primer frame.
+
+    window.addEventListener('flutter-first-frame', function () {
+      const splash = document.getElementById('dk-splash');
+
+      if (splash) {
+        splash.classList.add('hide');
+
+        // Retirar del DOM después de la transición.
+        setTimeout(function () {
+          splash.remove();
+        }, 1000);
+      }
+    });
+
     window.addEventListener('load', function (ev) {
       _flutter.loader.loadEntrypoint({
         serviceWorker: {

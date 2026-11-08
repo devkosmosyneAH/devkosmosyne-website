@@ -23,4 +23,4 @@ Allow: /flutter.js
 Allow: /main.dart.js
 
 # Sitemap XML
-Sitemap: https://TU-DOMINIO.com/sitemap.xml
+Sitemap: https://raw.githubusercontent.com/devkosmosyneAH/devkosmosyne-website/refs/heads/main/sitemap.xml
